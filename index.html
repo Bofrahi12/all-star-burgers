@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ALL STAR BURGERS — Built Like An All-Star</title>
 <meta name="description" content="Smashed fresh. Never frozen. Watch the All-Star stack come apart, layer by layer.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23e8442e'/%3E%3Ctext x='50' y='72' font-size='62' text-anchor='middle' fill='white'%3E★%3C/text%3E%3C/svg%3E">
 <style>
 @font-face{font-family:'Anton';src:url('fonts/Anton-400.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:'Archivo';src:url('fonts/Archivo-400.woff2') format('woff2');font-weight:400 900;font-display:swap}
@@ -136,11 +137,8 @@ nav.on-light .nav-links a{color:var(--ink)}
 }
 
 /* ---------- FOOTER ---------- */
-footer{background:#000;padding:80px 26px 34px;text-align:center;overflow:clip}
-footer .giant{font-family:var(--anton);font-size:clamp(52px,11.5vw,170px);line-height:.95;text-transform:uppercase;
-  color:transparent;-webkit-text-stroke:2px #3a3a3a;white-space:nowrap}
-footer .giant .star{-webkit-text-stroke:0;color:var(--red)}
-footer p{margin-top:26px;font-size:12px;line-height:1.7;color:#6f6a5e}
+footer{background:#000;padding:26px;text-align:center}
+footer p{font-size:11.5px;letter-spacing:.08em;color:#6f6a5e}
 footer p b{color:#a49d8d}
 </style>
 </head>
@@ -165,29 +163,22 @@ footer p b{color:#a49d8d}
   <img class="hlayer" data-hlayer src="img/l-cheese-a.webp" alt="">
   <img class="hlayer" data-hlayer src="img/l-bacon-a.webp" alt="">
   <img class="hlayer" data-hlayer src="img/l-bun-a.webp" alt="">
-  <span class="steam" style="left:52%;top:34%;animation-delay:0s"></span>
-  <span class="steam" style="left:57%;top:32%;animation-delay:1.7s;width:70px;height:70px"></span>
-  <span class="steam" style="left:49%;top:36%;animation-delay:3.1s;width:110px;height:110px"></span>
-  <div class="grain"></div>
   <div class="hero-caption" id="heroCaption">
     <h3>Smashed<br>to <em>Order</em></h3>
-    <p>Pressed on a ripping-hot grill the second you ask. Never before. This is the whole philosophy, in five layers.</p>
+    <p>Five layers, pressed on a ripping-hot grill the second you ask. Never before.</p>
   </div>
   <div class="scene-title" id="heroTitle">
-    <div class="kicker">Smashed fresh — never frozen</div>
     <h1>Built like<br>an All-Star.</h1>
     <div class="chips">
       <a class="chip solid" href="#lineup">Order now</a>
       <a class="chip ghost" href="#stack">The stack ↓</a>
     </div>
   </div>
-  <div class="scroll-cue">Scroll</div>
 </header>
 
 <!-- STACK · white diagram, then the flat-lay -->
 <section class="stack-scene" id="stack">
   <div class="stack-stage" id="stackStage">
-    <div class="stack-count">05 LAYERS</div>
     <img class="layer" data-layer src="img/l-base-a.webp" alt="Brioche base">
     <img class="layer" data-layer src="img/l-patty-a.webp" alt="Smashed beef patty">
     <img class="layer" data-layer src="img/l-cheese-a.webp" alt="Cheddar drip">
@@ -197,14 +188,13 @@ footer p b{color:#a49d8d}
     <img class="flat-item" id="flatShake" src="img/flat-shake.webp" alt="Chocolate shake">
     <img class="flat-item" id="flatFries" src="img/flat-fries.webp" alt="Fries carton">
     <div class="stack-labels" id="stackLabels">
-      <div class="cell" data-label><div class="leader"></div><div class="num">01</div><h3>Brioche Base</h3><p>Sauce-sealed so it never goes soggy.</p></div>
-      <div class="cell" data-label><div class="leader"></div><div class="num">02</div><h3>Smashed Patty</h3><p>Pressed thin for maximum crust. Times three.</p></div>
-      <div class="cell" data-label><div class="leader"></div><div class="num">03</div><h3>Cheddar Drip</h3><p>Double aged cheddar, melted until it runs.</p></div>
-      <div class="cell" data-label><div class="leader"></div><div class="num">04</div><h3>Beef Bacon</h3><p>Crispy, wavy, unapologetic.</p></div>
-      <div class="cell" data-label><div class="leader"></div><div class="num">05</div><h3>Brioche Crown</h3><p>Butter-toasted, sesame-crusted, glossy.</p></div>
+      <div class="cell" data-label><div class="leader"></div><div class="num">01</div><h3>Brioche Base</h3></div>
+      <div class="cell" data-label><div class="leader"></div><div class="num">02</div><h3>Smashed Patty</h3></div>
+      <div class="cell" data-label><div class="leader"></div><div class="num">03</div><h3>Cheddar Drip</h3></div>
+      <div class="cell" data-label><div class="leader"></div><div class="num">04</div><h3>Beef Bacon</h3></div>
+      <div class="cell" data-label><div class="leader"></div><div class="num">05</div><h3>Brioche Crown</h3></div>
     </div>
     <div class="stack-title">
-      <div class="kicker">Anatomy of a champion</div>
       <h2>The Stack</h2>
     </div>
   </div>
@@ -215,31 +205,26 @@ footer p b{color:#a49d8d}
   <div class="bg"><video autoplay muted loop playsinline preload="metadata" poster="img/tray.webp"><source src="films/tray-film.mp4" type="video/mp4"></video></div>
   <div class="shade"></div>
   <div class="scene-title">
-    <div class="kicker">The full roster</div>
     <h2>Game Day Combo <span class="price-chip">$19.99</span></h2>
   </div>
-  <div class="scene-note">Burger · Fries · Shake · Sauce duo</div>
 </section>
 
 <!-- BOX · pure film frame -->
 <section class="scene">
   <div class="bg"><video autoplay muted loop playsinline preload="metadata" poster="img/box.webp"><source src="films/box-film.mp4" type="video/mp4"></video></div>
   <div class="shade"></div>
-  <div class="scene-note">Sealed fresh — made to order</div>
 </section>
 
 <!-- LINEUP -->
 <section class="lineup" id="lineup">
   <div class="lineup-head">
     <h2>The <em>Lineup</em></h2>
-    <div class="note">Starting five — pick your player</div>
   </div>
 
   <article class="menu-row">
     <div class="ph"><img src="img/m-hook.webp" alt="Hook Shot Burger"></div>
     <div>
       <h3>Hook Shot Burger</h3>
-      <p class="desc">The original. One smashed patty, cheddar, pickles and the house All-Star sauce.</p>
     </div>
     <div class="prices">
       <div class="p-row main"><small>Solo</small><b>$13.79</b></div>
@@ -252,7 +237,6 @@ footer p b{color:#a49d8d}
     <div class="ph"><img src="img/m-layup.webp" alt="Layup Burger"></div>
     <div>
       <h3>Layup Burger</h3>
-      <p class="desc">Two patties, double cheddar, beef bacon and caramelized onions. Soft hands, heavy finish.</p>
     </div>
     <div class="prices">
       <div class="p-row main"><small>Solo</small><b>$16.09</b></div>
@@ -265,7 +249,6 @@ footer p b{color:#a49d8d}
     <div class="ph"><img src="img/m-free.webp" alt="Free Throw Chicken"></div>
     <div>
       <h3>Free Throw Chicken</h3>
-      <p class="desc">Crispy fried chicken thigh, honey-mustard glaze, lettuce and pickles. Nothing but net.</p>
     </div>
     <div class="prices">
       <div class="p-row main"><small>Solo</small><b>$12.94</b></div>
@@ -278,7 +261,6 @@ footer p b{color:#a49d8d}
     <div class="ph"><img src="img/shake.webp" alt="Overtime Milkshakes"></div>
     <div>
       <h3>Overtime Milkshakes</h3>
-      <p class="desc">Thick enough to stand a straw in. Spun to order, crowned with whipped cream.</p>
     </div>
     <div class="prices">
       <div class="p-row"><small>Choco</small><b>$5.99</b></div>
@@ -292,7 +274,6 @@ footer p b{color:#a49d8d}
     <div class="ph"><img src="img/fries-loaded.webp" alt="All-Star Loaded Fries"></div>
     <div>
       <h3>All-Star Loaded Fries</h3>
-      <p class="desc">Cheese sauce, crispy beef bits and jalapeños over a full tray of golden fries.</p>
     </div>
     <div class="prices">
       <div class="p-row main"><small>Tray</small><b>$13.21</b></div>
@@ -304,7 +285,6 @@ footer p b{color:#a49d8d}
     <div class="ph"><img src="img/fries-timeout.webp" alt="Timeout Fries"></div>
     <div>
       <h3>Timeout Fries</h3>
-      <p class="desc">Golden, sea-salted, dangerously snackable. The official pause button.</p>
     </div>
     <div class="prices">
       <div class="p-row main"><small>Regular</small><b>$3.16</b></div>
@@ -315,9 +295,7 @@ footer p b{color:#a49d8d}
 </section>
 
 <footer>
-  <div class="giant">ALL<span class="star">★</span>STAR</div>
-  <p><b>ALL STAR BURGERS</b> — a scroll-experience concept demo.<br>
-  Food photography is AI-generated for this demo. Built by <b>VERTEX WEB</b>.</p>
+  <p>ALL STAR BURGERS — concept demo by VERTEX WEB · Food photography is AI-generated for this demo.</p>
 </footer>
 
 <script src="js/gsap.min.js"></script>
@@ -329,7 +307,7 @@ var H = function(){ return window.innerHeight; }, W = function(){ return window.
 /* hero explosion */
 var hlayers = Array.prototype.slice.call(document.querySelectorAll('[data-hlayer]'));
 var hStartY = [0.055, 0.028, 0.0, -0.028, -0.055];   /* pile over the photo burger */
-var hEndY   = [0.30, 0.15, 0.0, -0.15, -0.30];       /* vertical spread */
+var hEndY   = [0.10, -0.03, -0.16, -0.29, -0.42];    /* base stays on the wrap, crown rises */
 function setHero(t, op){
   hlayers.forEach(function(el, i){
     var y = (hStartY[i] + (hEndY[i] - hStartY[i]) * t) * H();
@@ -391,7 +369,7 @@ if (reduced || !window.gsap) {
     scrollTrigger: {trigger: '#hero', start: 'top top', end: '+=1700', scrub: .6, pin: true, anticipatePin: 1}
   });
   window.__heroTL = htl;
-  htl.to('#heroTitle, .scroll-cue', {opacity: 0, y: -26, duration: .18, ease: 'power1.out'}, 0);
+  htl.to('#heroTitle', {opacity: 0, y: -26, duration: .18, ease: 'power1.out'}, 0);
   htl.to('#heroBg', {scale: 1.07, filter: 'brightness(.55)', duration: 1, ease: 'none'}, 0);
   htl.to(hp, {op: 1, duration: .16, ease: 'none', onUpdate: function(){ setHero(hp.t, hp.op); }}, .1);
   htl.to(hp, {t: 1, duration: .62, ease: 'power1.inOut', onUpdate: function(){ setHero(hp.t, hp.op); }}, .22);
