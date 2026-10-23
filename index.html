@@ -9,7 +9,8 @@
 @font-face{font-family:'Anton';src:url('fonts/Anton-400.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:'Archivo';src:url('fonts/Archivo-400.woff2') format('woff2');font-weight:400 900;font-display:swap}
 :root{
-  --ink:#0b0b0b; --coal:#121212; --paper:#f3efe6; --red:#e8442e; --gold:#ffb03a; --grey:#5c564a;
+  --ink:#0b0b0b; --paper:#f3efe6; --white:#ffffff; --red:#e8442e; --gold:#ffb03a;
+  --stone:#ddd3ba; --grey:#6b6557;
   --anton:'Anton',Impact,sans-serif; --arch:'Archivo',Helvetica,Arial,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -22,114 +23,108 @@ img{display:block;max-width:100%}
 nav{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;justify-content:space-between;
   padding:16px 26px;color:#fff;transition:color .35s}
 nav.on-light{color:var(--ink)}
-nav.on-light .nav-links a{color:var(--ink)}
+.logo{font-family:var(--anton);font-size:22px;letter-spacing:.06em;text-decoration:none;color:#fff;transition:color .35s}
 nav.on-light .logo{color:var(--ink)}
-.logo{font-family:var(--anton);font-size:22px;letter-spacing:.06em;text-decoration:none;color:#fff}
 .logo .star{color:var(--red)}
 .nav-links{display:flex;gap:26px;font-size:12px;font-weight:700;letter-spacing:.18em;align-items:center}
-.nav-links a{color:#fff;text-decoration:none;opacity:.85}
+.nav-links a{color:#fff;text-decoration:none;opacity:.85;transition:color .35s}
+nav.on-light .nav-links a{color:var(--ink)}
 .nav-links a:hover{opacity:1;color:var(--gold)}
 .order-btn{font-family:var(--anton);background:var(--red);color:#fff !important;padding:9px 18px;letter-spacing:.08em;border-radius:3px;opacity:1 !important}
 @media(max-width:640px){.nav-links a:not(.order-btn){display:none}}
 
-/* ---------- FILM SCENES (shared) ---------- */
-.scene{position:relative;min-height:100svh;overflow:clip;display:flex;flex-direction:column;justify-content:space-between}
+/* ---------- FILM SCENES ---------- */
+.scene{position:relative;min-height:100svh;overflow:clip}
 .scene .bg{position:absolute;inset:0;z-index:0}
 .scene .bg img{width:100%;height:116%;object-fit:cover;will-change:transform}
-.scene .shade{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 55%,rgba(0,0,0,.62) 100%)}
-.scene .content{position:relative;z-index:2;padding:96px 26px 30px}
-.scene .foot{position:relative;z-index:2;padding:0 26px 30px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.scene .shade{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 26%,rgba(0,0,0,0) 52%,rgba(0,0,0,.66) 100%)}
+.scene-title{position:absolute;left:26px;bottom:30px;z-index:3}
 .kicker{font-size:11px;font-weight:700;letter-spacing:.34em;color:var(--gold);text-transform:uppercase}
-.scene h1,.scene h2{font-family:var(--anton);text-transform:uppercase;line-height:.94;color:#fff}
-.scene h1{font-size:clamp(46px,7.4vw,110px);margin-top:12px}
-.scene h2{font-size:clamp(40px,6vw,88px);margin-top:12px}
-.scene h1 em,.scene h2 em{font-style:normal;color:var(--red)}
-.foot p{max-width:400px;font-size:14.5px;line-height:1.55;color:#e6e1d2}
-.scroll-cue{font-size:11px;font-weight:700;letter-spacing:.3em;color:#c9c2ae;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.scene-title h1,.scene-title h2{font-family:var(--anton);text-transform:uppercase;line-height:.95;color:var(--stone)}
+.scene-title h1{font-size:clamp(40px,5.6vw,76px);margin-top:10px}
+.scene-title h2{font-size:clamp(34px,4.6vw,60px);margin-top:10px}
+.scene-title em{font-style:normal;color:var(--red)}
+.chips{display:flex;gap:10px;margin-top:18px}
+.chip{font-family:var(--anton);font-size:14px;letter-spacing:.07em;padding:10px 20px;border-radius:3px;text-decoration:none}
+.chip.solid{background:var(--red);color:#fff}
+.chip.ghost{border:1.5px solid rgba(255,255,255,.65);color:#fff}
+.price-chip{display:inline-block;font-family:var(--anton);background:var(--red);color:#fff;font-size:20px;
+  padding:7px 16px;border-radius:3px;letter-spacing:.04em;transform:rotate(-2deg);margin-left:14px;vertical-align:middle}
+.scroll-cue{position:absolute;right:26px;bottom:30px;z-index:3;font-size:11px;font-weight:700;letter-spacing:.3em;
+  color:#c9c2ae;text-transform:uppercase;display:flex;align-items:center;gap:10px}
 .scroll-cue::after{content:"";width:1px;height:44px;background:linear-gradient(var(--gold),transparent);animation:drip 1.6s ease-in-out infinite}
 @keyframes drip{0%{transform:scaleY(.3);transform-origin:top}55%{transform:scaleY(1)}100%{transform:scaleY(.3);transform-origin:top}}
-.price-chip{display:inline-block;font-family:var(--anton);background:var(--red);color:#fff;font-size:22px;
-  padding:8px 18px;border-radius:3px;letter-spacing:.04em;transform:rotate(-2deg)}
-.scene-note{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#c9c2ae}
+.scene-note{position:absolute;right:26px;bottom:30px;z-index:3;font-size:11px;font-weight:700;letter-spacing:.26em;
+  text-transform:uppercase;color:rgba(255,255,255,.75)}
 
-/* ---------- STACK (white diagram) ---------- */
-.stack-scene{position:relative;background:var(--paper);color:var(--ink)}
+/* ---------- HERO explosion layers ---------- */
+.hlayer{position:absolute;left:55%;top:45%;width:min(410px,52vw);z-index:2;opacity:0;
+  transform:translate(-50%,-50%);will-change:transform,opacity;filter:drop-shadow(0 14px 12px rgba(0,0,0,.45))}
+.hero-caption{position:absolute;top:110px;right:26px;z-index:3;width:min(300px,80vw);text-align:right;opacity:0}
+.hero-caption h3{font-family:var(--anton);font-size:clamp(26px,3.4vw,44px);color:#fff;text-transform:uppercase;line-height:1}
+.hero-caption h3 em{font-style:normal;color:var(--red)}
+.hero-caption p{margin-top:10px;font-size:13px;line-height:1.55;color:#d9d3c0}
+@media(max-width:760px){
+  .hlayer{left:52%;width:46vw}
+  .hero-caption{display:none}
+  .scene .bg img{object-position:64% 50%}
+}
+
+/* ---------- STACK (white) ---------- */
+.stack-scene{position:relative;background:var(--white);color:var(--ink)}
 .stack-stage{position:relative;height:100svh;overflow:clip}
-.stack-title{position:absolute;top:84px;left:26px;z-index:5}
+.stack-title{position:absolute;left:26px;bottom:26px;z-index:5}
 .stack-title .kicker{color:var(--red)}
-.stack-title h2{font-family:var(--anton);font-size:clamp(40px,6vw,88px);text-transform:uppercase;line-height:.95;color:var(--ink)}
-.stack-count{position:absolute;top:96px;right:26px;z-index:5;font-family:var(--anton);font-size:15px;color:var(--grey);letter-spacing:.14em}
-.layer{position:absolute;left:50%;top:44%;width:min(240px,23vw);transform:translate(-50%,-50%);
-  will-change:transform;z-index:2;filter:drop-shadow(0 16px 12px rgba(20,10,0,.20))}
-.stack-labels{position:absolute;left:0;right:0;bottom:6.5%;z-index:6;display:flex}
+.stack-title h2{font-family:var(--anton);font-size:clamp(38px,5vw,68px);text-transform:uppercase;line-height:.95;color:var(--ink)}
+.stack-count{position:absolute;top:92px;right:26px;z-index:5;font-family:var(--anton);font-size:14px;color:var(--grey);letter-spacing:.14em}
+.layer{position:absolute;left:50%;top:40%;width:min(240px,23vw);transform:translate(-50%,-50%);
+  will-change:transform,opacity;z-index:2;filter:drop-shadow(0 16px 12px rgba(20,10,0,.18))}
+.stack-labels{position:absolute;left:0;right:0;bottom:13%;z-index:6;display:flex}
 .stack-labels .cell{flex:1;text-align:center;padding:0 6px;opacity:0}
-.stack-labels .leader{width:1px;height:36px;background:var(--ink);margin:0 auto 10px;opacity:.55}
+.stack-labels .leader{width:1px;height:32px;background:var(--ink);margin:0 auto 9px;opacity:.5}
 .stack-labels .num{font-family:var(--anton);color:var(--red);font-size:13px;letter-spacing:.12em}
 .stack-labels h3{font-family:var(--anton);font-size:clamp(13px,1.7vw,21px);text-transform:uppercase;color:var(--ink);margin:3px 0 4px}
 .stack-labels p{font-size:11.5px;line-height:1.45;color:var(--grey);max-width:190px;margin:0 auto}
+.flat-item{position:absolute;z-index:3;opacity:0;will-change:transform,opacity;filter:drop-shadow(0 18px 14px rgba(20,10,0,.16))}
+#flatBurger{left:45%;top:41%;width:min(440px,48vw)}
+#flatShake{left:67%;top:19%;width:min(235px,25vw)}
+#flatFries{left:25%;top:65%;width:min(255px,27vw)}
+.flat-item{transform:translate(-50%,-50%)}
 @media(max-width:760px){
   .layer{width:19.5vw}
   .stack-labels p{display:none}
-  .stack-labels .leader{height:22px}
-  .stack-title{top:74px}
+  .stack-labels{bottom:15%}
+  .stack-labels .leader{height:20px}
+  #flatBurger{width:44vw}
+  #flatShake{width:24vw;left:70%}
+  #flatFries{width:28vw;left:22%}
 }
 
-/* ---------- SPECS ---------- */
-.specs{background:var(--paper);color:var(--ink);padding:30px 26px 80px}
-.spec-row{display:grid;grid-template-columns:64px 1fr auto;gap:18px;align-items:baseline;
-  padding:18px 0;border-bottom:1px solid #d9d3bf}
-.spec-row:first-of-type{border-top:2px solid var(--ink)}
-.spec-row .n{font-family:var(--anton);color:var(--red);font-size:17px}
-.spec-row .name{font-family:var(--anton);font-size:clamp(20px,3vw,34px);text-transform:uppercase}
-.spec-row .desc{font-size:13px;color:var(--grey);max-width:520px;line-height:1.5}
-.spec-row .w{font-weight:900;font-size:14px;letter-spacing:.06em;white-space:nowrap}
-@media(max-width:640px){.spec-row{grid-template-columns:40px 1fr}.spec-row .w{display:none}}
-
-/* ---------- MARQUEE ---------- */
-.marquee{background:var(--red);color:#fff;overflow:clip;padding:13px 0;transform:rotate(-1.2deg) scale(1.02)}
-.marquee-track{display:flex;white-space:nowrap;font-family:var(--anton);font-size:20px;letter-spacing:.1em;
-  text-transform:uppercase;animation:mq 22s linear infinite;width:max-content}
-.marquee-track span{padding:0 14px}
-@keyframes mq{to{transform:translateX(-50%)}}
-
-/* ---------- COMBO BAND ---------- */
-.combo-band{background:var(--ink);padding:56px 26px;display:grid;grid-template-columns:repeat(4,1fr) auto;gap:28px;align-items:center}
-.combo-band .item small{display:block;font-size:10px;font-weight:900;letter-spacing:.24em;color:var(--gold);text-transform:uppercase;margin-bottom:7px}
-.combo-band .item b{font-family:var(--anton);font-weight:400;font-size:19px;color:#fff;text-transform:uppercase}
-.combo-band .cta{font-family:var(--anton);background:var(--red);color:#fff;text-decoration:none;padding:14px 28px;font-size:16px;letter-spacing:.06em;border-radius:3px;white-space:nowrap}
-.combo-band .cta:hover{background:#ff5238}
-@media(max-width:900px){.combo-band{grid-template-columns:1fr 1fr}}
-
-/* ---------- SHAKES flavors ---------- */
-.flavors{margin-top:22px;max-width:420px}
-.flavor-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.22);font-size:13.5px}
-.flavor-row b{font-family:var(--anton);letter-spacing:.04em;font-weight:400;color:#fff}
-.flavor-row span{color:var(--gold);font-weight:900}
-
 /* ---------- LINEUP ---------- */
-.lineup{background:var(--paper);color:var(--ink);padding:90px 26px 80px}
-.lineup-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px;margin-bottom:10px}
-.lineup h2{font-family:var(--anton);font-size:clamp(44px,7.4vw,104px);text-transform:uppercase;line-height:.92}
+.lineup{background:var(--white);color:var(--ink);padding:80px 26px 70px}
+.lineup-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px;margin-bottom:6px}
+.lineup h2{font-family:var(--anton);font-size:clamp(42px,7vw,96px);text-transform:uppercase;line-height:.92}
 .lineup h2 em{font-style:normal;color:var(--red)}
 .lineup .note{font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--grey)}
-.menu-row{display:grid;grid-template-columns:250px 1fr auto;gap:28px;align-items:center;
-  padding:26px 0;border-top:1px solid #cfc8b0}
-.menu-row:last-of-type{border-bottom:1px solid #cfc8b0}
-.menu-row .ph{border-radius:6px;overflow:clip;aspect-ratio:4/3}
+.menu-row{display:grid;grid-template-columns:29% 1fr auto;gap:30px;align-items:center;
+  padding:24px 0;border-top:1px solid #e4ddc9}
+.menu-row:last-of-type{border-bottom:1px solid #e4ddc9}
+.menu-row .ph{border-radius:4px;overflow:clip;aspect-ratio:4/3.1}
 .menu-row .ph img{width:100%;height:100%;object-fit:cover}
-.menu-row h3{font-family:var(--anton);font-size:clamp(28px,4.4vw,56px);text-transform:uppercase;line-height:1}
-.menu-row .desc{margin-top:8px;font-size:13.5px;line-height:1.5;color:var(--grey);max-width:460px}
-.prices{text-align:right}
-.prices .solo small{display:block;font-size:9.5px;font-weight:900;letter-spacing:.24em;color:var(--grey);text-transform:uppercase;margin-bottom:4px}
-.prices .solo b{font-family:var(--anton);font-weight:400;font-size:32px}
-.prices .combo-p{margin-top:6px;font-size:12.5px;color:var(--grey);font-weight:700}
-.prices .combo-p b{color:var(--ink)}
-.add-btn{margin-top:12px;font-family:var(--anton);background:none;border:none;color:var(--red);cursor:pointer;
-  font-size:15px;letter-spacing:.08em;padding:4px 0}
-.add-btn:hover{color:var(--ink)}
+.menu-row h3{font-family:var(--anton);font-size:clamp(27px,4.2vw,54px);text-transform:uppercase;line-height:1}
+.menu-row .desc{margin-top:8px;font-size:13.5px;line-height:1.5;color:var(--grey);max-width:440px}
+.prices{text-align:right;min-width:110px}
+.prices .p-row{display:flex;justify-content:flex-end;gap:10px;align-items:baseline;padding:2px 0}
+.prices .p-row small{font-size:9.5px;font-weight:900;letter-spacing:.2em;color:var(--grey);text-transform:uppercase}
+.prices .p-row b{font-family:var(--anton);font-weight:400;font-size:23px}
+.prices .p-row.main b{font-size:30px}
+.add-btn{margin-top:10px;font-family:var(--anton);background:none;border:1.5px solid var(--ink);color:var(--ink);
+  cursor:pointer;font-size:13px;letter-spacing:.08em;padding:7px 16px;border-radius:3px}
+.add-btn:hover{background:var(--red);border-color:var(--red);color:#fff}
 @media(max-width:860px){
   .menu-row{grid-template-columns:1fr;gap:14px}
   .prices{text-align:left}
+  .prices .p-row{justify-content:flex-start}
 }
 
 /* ---------- FOOTER ---------- */
@@ -153,33 +148,42 @@ footer p b{color:#a49d8d}
   </div>
 </nav>
 
-<!-- HERO · film scene -->
-<header class="scene">
-  <div class="bg"><img class="film" src="img/hero-table.webp" alt="The All-Star burger on parchment, dark table"></div>
+<!-- HERO · the burger, then it comes apart -->
+<header class="scene" id="hero">
+  <div class="bg"><img id="heroBg" src="img/hero-table.webp" alt="The All-Star burger on parchment, dark table"></div>
   <div class="shade"></div>
-  <div class="content">
+  <img class="hlayer" data-hlayer src="img/l-base-a.webp" alt="">
+  <img class="hlayer" data-hlayer src="img/l-patty-a.webp" alt="">
+  <img class="hlayer" data-hlayer src="img/l-cheese-a.webp" alt="">
+  <img class="hlayer" data-hlayer src="img/l-bacon-a.webp" alt="">
+  <img class="hlayer" data-hlayer src="img/l-bun-a.webp" alt="">
+  <div class="hero-caption" id="heroCaption">
+    <h3>Smashed<br>to <em>Order</em></h3>
+    <p>Pressed on a ripping-hot grill the second you ask. Never before. This is the whole philosophy, in five layers.</p>
+  </div>
+  <div class="scene-title" id="heroTitle">
     <div class="kicker">Smashed fresh — never frozen</div>
-    <h1 id="heroTitle">Built like<br>an <em>All-Star.</em></h1>
+    <h1>Built like<br>an All-Star.</h1>
+    <div class="chips">
+      <a class="chip solid" href="#lineup">Order now</a>
+      <a class="chip ghost" href="#stack">The stack ↓</a>
+    </div>
   </div>
-  <div class="foot">
-    <p>Three smashed patties, a cheddar landslide and bacon with a crunch you can hear. Scroll — and watch it come apart, layer by layer.</p>
-    <div class="scroll-cue">Scroll to deconstruct</div>
-  </div>
+  <div class="scroll-cue">Scroll</div>
 </header>
 
-<!-- STACK · white diagram -->
+<!-- STACK · white diagram, then the flat-lay -->
 <section class="stack-scene" id="stack">
   <div class="stack-stage" id="stackStage">
-    <div class="stack-title">
-      <div class="kicker">Anatomy of a champion</div>
-      <h2>The Stack</h2>
-    </div>
     <div class="stack-count">05 LAYERS</div>
     <img class="layer" data-layer src="img/l-base-a.webp" alt="Brioche base">
     <img class="layer" data-layer src="img/l-patty-a.webp" alt="Smashed beef patty">
     <img class="layer" data-layer src="img/l-cheese-a.webp" alt="Cheddar drip">
     <img class="layer" data-layer src="img/l-bacon-a.webp" alt="Crispy beef bacon">
     <img class="layer" data-layer src="img/l-bun-a.webp" alt="Brioche crown">
+    <img class="flat-item" id="flatBurger" src="img/flat-burger.webp" alt="The assembled All-Star burger">
+    <img class="flat-item" id="flatShake" src="img/flat-shake.webp" alt="Chocolate shake">
+    <img class="flat-item" id="flatFries" src="img/flat-fries.webp" alt="Fries carton">
     <div class="stack-labels" id="stackLabels">
       <div class="cell" data-label><div class="leader"></div><div class="num">01</div><h3>Brioche Base</h3><p>Sauce-sealed so it never goes soggy.</p></div>
       <div class="cell" data-label><div class="leader"></div><div class="num">02</div><h3>Smashed Patty</h3><p>Pressed thin for maximum crust. Times three.</p></div>
@@ -187,72 +191,29 @@ footer p b{color:#a49d8d}
       <div class="cell" data-label><div class="leader"></div><div class="num">04</div><h3>Beef Bacon</h3><p>Crispy, wavy, unapologetic.</p></div>
       <div class="cell" data-label><div class="leader"></div><div class="num">05</div><h3>Brioche Crown</h3><p>Butter-toasted, sesame-crusted, glossy.</p></div>
     </div>
+    <div class="stack-title">
+      <div class="kicker">Anatomy of a champion</div>
+      <h2>The Stack</h2>
+    </div>
   </div>
 </section>
-
-<!-- SPECS -->
-<section class="specs">
-  <div class="spec-row"><div class="n">01</div><div><div class="name">Brioche Base</div><div class="desc">The foundation. Soaks up the juices, holds the empire together.</div></div><div class="w">38 g</div></div>
-  <div class="spec-row"><div class="n">02</div><div><div class="name">Smashed Patty ×3</div><div class="desc">Fresh chuck, smashed and seared to a lace-edged crust.</div></div><div class="w">3 × 90 g</div></div>
-  <div class="spec-row"><div class="n">03</div><div><div class="name">Cheddar Drip</div><div class="desc">Two slices of aged cheddar per patty. No shortcuts.</div></div><div class="w">36 g</div></div>
-  <div class="spec-row"><div class="n">04</div><div><div class="name">Beef Bacon</div><div class="desc">Crisped on the flat-top until it shatters.</div></div><div class="w">28 g</div></div>
-  <div class="spec-row"><div class="n">05</div><div><div class="name">Brioche Crown</div><div class="desc">Butter-toasted sesame brioche, baked at dawn.</div></div><div class="w">42 g</div></div>
-</section>
-
-<div class="marquee" aria-hidden="true"><div class="marquee-track" id="mqTrack"></div></div>
 
 <!-- COMBO · film scene -->
 <section class="scene" id="combo">
   <div class="bg"><img class="film" src="img/tray.webp" alt="Game Day Combo tray"></div>
   <div class="shade"></div>
-  <div class="content">
+  <div class="scene-title">
     <div class="kicker">The full roster</div>
-    <h2>Game Day<br><em>Combo</em></h2>
+    <h2>Game Day Combo <span class="price-chip">$19.99</span></h2>
   </div>
-  <div class="foot">
-    <p>Burger, fries, shake and the sauce duo — everything in one tray, built for tip-off and overtime.</p>
-    <span class="price-chip">$19.99</span>
-  </div>
+  <div class="scene-note">Burger · Fries · Shake · Sauce duo</div>
 </section>
 
-<!-- COMBO BAND -->
-<section class="combo-band">
-  <div class="item"><small>Main</small><b>All-Star Burger</b></div>
-  <div class="item"><small>Side</small><b>Golden Fries</b></div>
-  <div class="item"><small>Drink</small><b>Any Shake</b></div>
-  <div class="item"><small>Extra</small><b>Sauce Duo</b></div>
-  <a class="cta" href="#lineup">Build my combo</a>
-</section>
-
-<!-- BOX · interlude scene -->
+<!-- BOX · pure film frame -->
 <section class="scene">
   <div class="bg"><img class="film" src="img/box.webp" alt="Sealed All-Star box"></div>
   <div class="shade"></div>
-  <div class="content">
-    <div class="kicker">Sealed fresh</div>
-    <h2>Made<br>to <em>Order</em></h2>
-  </div>
-  <div class="foot">
-    <span class="scene-note">Nothing sits under a heat lamp. Ever.</span>
-    <span class="scene-note">Est. game day</span>
-  </div>
-</section>
-
-<!-- SHAKES · film scene -->
-<section class="scene">
-  <div class="bg"><img class="film" src="img/shake.webp" alt="Overtime milkshake" style="object-position:72% 50%"></div>
-  <div class="shade"></div>
-  <div class="content">
-    <div class="kicker">Goes to overtime</div>
-    <h2>Overtime<br><em>Shakes</em></h2>
-    <div class="flavors">
-      <div class="flavor-row"><b>CHOCO FUDGE MELTDOWN</b><span>$6.49</span></div>
-      <div class="flavor-row"><b>VANILLA BEAN MVP</b><span>$5.99</span></div>
-      <div class="flavor-row"><b>STRAWBERRY FAST-BREAK</b><span>$6.49</span></div>
-      <div class="flavor-row"><b>SALTED CARAMEL CLUTCH</b><span>$6.99</span></div>
-    </div>
-  </div>
-  <div class="foot"><p>Thick enough to stand a straw in. Spun to order, crowned with whipped cream.</p></div>
+  <div class="scene-note">Sealed fresh — made to order</div>
 </section>
 
 <!-- LINEUP -->
@@ -269,8 +230,8 @@ footer p b{color:#a49d8d}
       <p class="desc">The original. One smashed patty, cheddar, pickles and the house All-Star sauce.</p>
     </div>
     <div class="prices">
-      <div class="solo"><small>Solo</small><b>$13.79</b></div>
-      <div class="combo-p">Combo <b>$18.54</b></div>
+      <div class="p-row main"><small>Solo</small><b>$13.79</b></div>
+      <div class="p-row"><small>Combo</small><b>$18.54</b></div>
       <button class="add-btn">+ ADD</button>
     </div>
   </article>
@@ -282,8 +243,8 @@ footer p b{color:#a49d8d}
       <p class="desc">Two patties, double cheddar, beef bacon and caramelized onions. Soft hands, heavy finish.</p>
     </div>
     <div class="prices">
-      <div class="solo"><small>Solo</small><b>$16.09</b></div>
-      <div class="combo-p">Combo <b>$20.79</b></div>
+      <div class="p-row main"><small>Solo</small><b>$16.09</b></div>
+      <div class="p-row"><small>Combo</small><b>$20.79</b></div>
       <button class="add-btn">+ ADD</button>
     </div>
   </article>
@@ -295,8 +256,47 @@ footer p b{color:#a49d8d}
       <p class="desc">Crispy fried chicken thigh, honey-mustard glaze, lettuce and pickles. Nothing but net.</p>
     </div>
     <div class="prices">
-      <div class="solo"><small>Solo</small><b>$12.94</b></div>
-      <div class="combo-p">Combo <b>$17.46</b></div>
+      <div class="p-row main"><small>Solo</small><b>$12.94</b></div>
+      <div class="p-row"><small>Combo</small><b>$17.46</b></div>
+      <button class="add-btn">+ ADD</button>
+    </div>
+  </article>
+
+  <article class="menu-row">
+    <div class="ph"><img src="img/shake.webp" alt="Overtime Milkshakes"></div>
+    <div>
+      <h3>Overtime Milkshakes</h3>
+      <p class="desc">Thick enough to stand a straw in. Spun to order, crowned with whipped cream.</p>
+    </div>
+    <div class="prices">
+      <div class="p-row"><small>Choco</small><b>$5.99</b></div>
+      <div class="p-row"><small>Vanilla</small><b>$5.99</b></div>
+      <div class="p-row"><small>Strawberry</small><b>$5.99</b></div>
+      <button class="add-btn">+ ADD</button>
+    </div>
+  </article>
+
+  <article class="menu-row">
+    <div class="ph"><img src="img/fries-loaded.webp" alt="All-Star Loaded Fries"></div>
+    <div>
+      <h3>All-Star Loaded Fries</h3>
+      <p class="desc">Cheese sauce, crispy beef bits and jalapeños over a full tray of golden fries.</p>
+    </div>
+    <div class="prices">
+      <div class="p-row main"><small>Tray</small><b>$13.21</b></div>
+      <button class="add-btn">+ ADD</button>
+    </div>
+  </article>
+
+  <article class="menu-row">
+    <div class="ph"><img src="img/fries-timeout.webp" alt="Timeout Fries"></div>
+    <div>
+      <h3>Timeout Fries</h3>
+      <p class="desc">Golden, sea-salted, dangerously snackable. The official pause button.</p>
+    </div>
+    <div class="prices">
+      <div class="p-row main"><small>Regular</small><b>$3.16</b></div>
+      <div class="p-row"><small>Small</small><b>$2.76</b></div>
       <button class="add-btn">+ ADD</button>
     </div>
   </article>
@@ -311,76 +311,108 @@ footer p b{color:#a49d8d}
 <script src="js/gsap.min.js"></script>
 <script src="js/ScrollTrigger.min.js"></script>
 <script>
-/* ---- stack geometry (plain JS) ---- */
-var layers = Array.prototype.slice.call(document.querySelectorAll('[data-layer]'));
-var cells  = Array.prototype.slice.call(document.querySelectorAll('[data-label]'));
-/* DOM order: base, patty, cheese, bacon, crown */
-var startY = [0.105, 0.048, 0.0, -0.048, -0.105];      /* x innerHeight — the pile */
-var endX   = [-0.385, -0.1925, 0.0, 0.1925, 0.385];    /* x innerWidth — the row */
-function setStack(t){
-  var H = window.innerHeight, W = window.innerWidth;
-  layers.forEach(function(el, i){
-    var x = endX[i] * W * t;
-    var y = startY[i] * H * (1 - t);
-    var s = 1.5 - 0.5 * t;
-    el.style.transform = 'translate(-50%,-50%) translate(' + x + 'px,' + y + 'px) scale(' + s + ')';
+/* ---------- shared geometry ---------- */
+var H = function(){ return window.innerHeight; }, W = function(){ return window.innerWidth; };
+
+/* hero explosion */
+var hlayers = Array.prototype.slice.call(document.querySelectorAll('[data-hlayer]'));
+var hStartY = [0.055, 0.028, 0.0, -0.028, -0.055];   /* pile over the photo burger */
+var hEndY   = [0.30, 0.15, 0.0, -0.15, -0.30];       /* vertical spread */
+function setHero(t, op){
+  hlayers.forEach(function(el, i){
+    var y = (hStartY[i] + (hEndY[i] - hStartY[i]) * t) * H();
+    el.style.transform = 'translate(-50%,-50%) translateY(' + y + 'px)';
+    el.style.opacity = op;
   });
 }
-setStack(0);
+setHero(0, 0);
 
-/* marquee */
-(function(){
-  var t = document.getElementById('mqTrack'), chunk = '';
-  for (var i = 0; i < 6; i++) chunk += '<span>Smashed fresh ★ Never frozen ★ Made to order ★ </span>';
-  t.innerHTML = chunk + chunk;
-})();
+/* stack: pile -> row -> flat-lay */
+var layers = Array.prototype.slice.call(document.querySelectorAll('[data-layer]'));
+var cells  = Array.prototype.slice.call(document.querySelectorAll('[data-label]'));
+var startY = [0.105, 0.048, 0.0, -0.048, -0.105];
+var endX   = [-0.385, -0.1925, 0.0, 0.1925, 0.385];
+function setRow(t){
+  layers.forEach(function(el, i){
+    var x = endX[i] * W() * t;
+    var y = startY[i] * H() * (1 - t);
+    var s = 1.5 - 0.5 * t;
+    el.style.transform = 'translate(-50%,-50%) translate(' + x + 'px,' + y + 'px) scale(' + s + ')';
+    el.style.opacity = 1;
+  });
+}
+function setConverge(t){
+  layers.forEach(function(el, i){
+    var x = endX[i] * W() * (1 - t) + (-0.05 * W()) * t;
+    var y = startY[i] * H() * 0.4 * t;
+    var s = 1 + 0.12 * t;
+    el.style.transform = 'translate(-50%,-50%) translate(' + x + 'px,' + y + 'px) scale(' + s + ')';
+    el.style.opacity = 1 - t;
+  });
+}
+setRow(0);
 
-/* nav turns dark over light sections (observer-based, pin-proof) */
+/* nav turns dark over light sections */
 (function(){
   var nav = document.querySelector('nav'), lit = new Set();
   var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (e.isIntersecting) lit.add(e.target); else lit.delete(e.target);
-    });
+    entries.forEach(function(e){ if (e.isIntersecting) lit.add(e.target); else lit.delete(e.target); });
     nav.classList.toggle('on-light', lit.size > 0);
   }, {rootMargin: '-58px 0px -88% 0px', threshold: 0});
-  document.querySelectorAll('.stack-scene, .specs, .lineup').forEach(function(s){ io.observe(s); });
+  document.querySelectorAll('.stack-scene, .lineup').forEach(function(s){ io.observe(s); });
 })();
 
 var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (reduced || !window.gsap) {
-  setStack(1);
+  setRow(1);
   cells.forEach(function(c){ c.style.opacity = 1; });
 } else {
   gsap.registerPlugin(ScrollTrigger);
 
   /* hero intro */
-  gsap.from('#heroTitle', {y: 44, opacity: 0, duration: 1.1, ease: 'power3.out', delay: .15});
-  gsap.from('.hero .kicker, header .foot', {opacity: 0, y: 20, duration: 1, delay: .5, stagger: .15, ease: 'power3.out'});
+  gsap.from('#heroTitle', {y: 40, opacity: 0, duration: 1.1, ease: 'power3.out', delay: .15});
+  gsap.from('.scroll-cue', {opacity: 0, duration: 1, delay: .7});
 
-  /* film push on every scene bg */
+  /* ---- HERO: pinned in-scene explosion ---- */
+  var hp = {t: 0, op: 0};
+  var htl = gsap.timeline({
+    scrollTrigger: {trigger: '#hero', start: 'top top', end: '+=1700', scrub: .6, pin: true, anticipatePin: 1}
+  });
+  window.__heroTL = htl;
+  htl.to('#heroTitle, .scroll-cue', {opacity: 0, y: -26, duration: .18, ease: 'power1.out'}, 0);
+  htl.to('#heroBg', {scale: 1.07, filter: 'brightness(.55)', duration: 1, ease: 'none'}, 0);
+  htl.to(hp, {op: 1, duration: .16, ease: 'none', onUpdate: function(){ setHero(hp.t, hp.op); }}, .1);
+  htl.to(hp, {t: 1, duration: .62, ease: 'power1.inOut', onUpdate: function(){ setHero(hp.t, hp.op); }}, .22);
+  htl.fromTo('#heroCaption', {opacity: 0, x: 34}, {opacity: 1, x: 0, duration: .2, ease: 'power2.out'}, .58);
+
+  /* film push on combo/box scenes */
   gsap.utils.toArray('.scene .bg img.film').forEach(function(img){
     gsap.fromTo(img, {yPercent: -7}, {yPercent: 0, ease: 'none',
       scrollTrigger: {trigger: img.closest('.scene'), start: 'top bottom', end: 'bottom top', scrub: true}});
   });
 
-  /* ---- THE STACK: pinned horizontal spread ---- */
-  var tl = gsap.timeline({
-    scrollTrigger: {trigger: '#stack', start: 'top top', end: '+=2400', scrub: .6, pin: true,
-      anticipatePin: 1, onRefresh: function(){ setStack(0); }}
+  /* ---- STACK: pinned, three phases ---- */
+  var sp = {a: 0, b: 0};
+  var stl = gsap.timeline({
+    scrollTrigger: {trigger: '#stack', start: 'top top', end: '+=3400', scrub: .6, pin: true,
+      anticipatePin: 1, onRefresh: function(){ if (sp.b > 0) setConverge(sp.b); else setRow(sp.a); }}
   });
-  window.__stackTL = tl;
-  var proxy = {t: 0};
-  tl.to(proxy, {t: 1, ease: 'none', duration: 1, onUpdate: function(){ setStack(proxy.t); }}, 0);
-  tl.fromTo('.stack-title', {x: -50, opacity: 0}, {x: 0, opacity: 1, duration: .2, ease: 'power2.out'}, .04);
-  tl.fromTo('.stack-count', {opacity: 0}, {opacity: 1, duration: .15}, .1);
+  window.__stackTL = stl;
+  stl.to(sp, {a: 1, duration: .42, ease: 'power1.inOut', onUpdate: function(){ if (sp.b === 0) setRow(sp.a); }}, 0);
   cells.forEach(function(c, i){
-    tl.fromTo(c, {opacity: 0, y: 24}, {opacity: 1, y: 0, duration: .1, ease: 'power2.out'}, .42 + i * .11);
+    stl.fromTo(c, {opacity: 0, y: 24}, {opacity: 1, y: 0, duration: .07, ease: 'power2.out'}, .3 + i * .045);
   });
+  stl.to(cells, {opacity: 0, y: -14, duration: .06, ease: 'power1.in'}, .58);
+  stl.to('.stack-count', {opacity: 0, duration: .05}, .58);
+  stl.to(sp, {b: 1, duration: .3, ease: 'power1.inOut', onUpdate: function(){ setConverge(sp.b); }}, .62);
+  stl.fromTo('#flatBurger', {opacity: 0, scale: .92}, {opacity: 1, scale: 1, duration: .16, ease: 'power2.out'}, .8);
+  stl.fromTo('#flatShake', {opacity: 0, y: -26}, {opacity: 1, y: 0, duration: .14, ease: 'power2.out'}, .86);
+  stl.fromTo('#flatFries', {opacity: 0, y: 26}, {opacity: 1, y: 0, duration: .14, ease: 'power2.out'}, .9);
 
-  /* section reveals */
-  gsap.utils.toArray('.spec-row, .menu-row, .combo-band .item').forEach(function(el){
-    gsap.fromTo(el, {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: .8, ease: 'power3.out',
+  /* reveals */
+  gsap.utils.toArray('.menu-row, .scene-title').forEach(function(el){
+    if (el.id === 'heroTitle') return;
+    gsap.fromTo(el, {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: .85, ease: 'power3.out',
       scrollTrigger: {trigger: el, start: 'top 88%'}});
   });
 }
